@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Regalo Especial para Ti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .photo-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .photo-frame {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            border: 3px solid white;
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+        
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+        }
+        
+        .hidden-content {
+            display: none;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            margin-top: 20px;
+            animation: fadeIn 1s;
+        }
+        
+        .gift-box {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            margin: 0 auto 20px;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.5s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gift-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .gift-lid {
+            width: 160px;
+            height: 40px;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            position: absolute;
+            top: -20px;
+            left: -5px;
+            border-radius: 10px;
+        }
+        
+        .gift-bow {
+            width: 30px;
+            height: 30px;
+            background: #ff6b6b;
+            position: absolute;
+            top: -15px;
+            left: 60px;
+            border-radius: 50%;
+        }
+        
+        .gift-bow:before, .gift-bow:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 10px;
+        }
+        
+        .gift-bow:before {
+            top: 5px;
+            left: -45px;
+            transform: rotate(45deg);
+        }
+        
+        .gift-bow:after {
+            top: 5px;
+            left: 15px;
+            transform: rotate(-45deg);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f1f1f1;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+            border-radius: 50%;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .hidden-images {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+            }
+            
+            .photo-frame {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>¡Feliz mes!</h1>
+            <p>Un pequeño detalle para recordarte lo especial que eres</p>
+        </div>
+        
+        <div class="content">
+            <div class="photo-gallery" id="initialImages">
+                <div class="photo-frame">
+                    <img src="imagen1.jpeg" alt="Recuerdo especial 1">
+                </div>
+                <div class="photo-frame">
+                    <img src="imagen2.jpeg" alt="Recuerdo especial 2">
+                </div>
+                <div class="photo-frame">
+                    <img src="imagen3.jpeg" alt="Recuerdo especial 3">
+                </div>
+            </div>
+            
+            <div class="message">
+                <p>olis,</p>
+                <p>espero que este pequeño regalo te traiga una sonrisa. Sos una persona increíble y valiosa en mi vida.</p>
+                <p>¡Gracias por ser tan especial!</p>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <div class="gift-box floating" onclick="openGift()">
+                    <div class="gift-lid"></div>
+                    <div class="gift-bow"></div>
+                </div>
+                <p style="margin-top: 10px; color: #777;">Haz clic en la caja de regalo</p>
+            </div>
+            
+            <button class="btn" onclick="showMessage()">Ver Mensaje Especial</button>
+            
+            <div id="specialMessage" class="hidden-content">
+                <h2 style="color: #ff6b6b; margin-bottom: 20px;">¡Eres Increíble!</h2>
+                <p style="font-size: 1.2rem; line-height: 1.6;">
+                    Quiero que sepas que me encata como sos y desde que te conoci me di cuenta de que con vos quería compartir más momentos. 
+                    Eres una persona maravillosa y estoy agradecido por tenerte en mi vida. 
+                    ¡Te quiero mucho!
+                </p>
+                
+                <div class="photo-gallery" id="hiddenImages" style="display: none; margin-top: 30px;">
+                    <div class="photo-frame">
+                        <img src="imagen4.jpeg" alt="Sorpresa 1">
+                    </div>
+                    <div class="photo-frame">
+                        <img src="imagen5.jpeg" alt="Sorpresa 2">
+                    </div>
+                    <div class="photo-frame">
+                        <img src="imagen6.jpeg" alt="Sorpresa 3">
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px; font-size: 2rem;">✨ 🌟 💖</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Hecho con cariño para ti • <span id="currentDate"></span></p>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar fecha actual
+        const currentDate = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('currentDate').textContent = currentDate.toLocaleDateString('es-ES', options);
+        
+        // Función para mostrar mensaje especial
+        function showMessage() {
+            const message = document.getElementById('specialMessage');
+            const hiddenImages = document.getElementById('hiddenImages');
+            
+            if (message.style.display === 'block') {
+                message.style.display = 'none';
+            } else {
+                message.style.display = 'block';
+                hiddenImages.style.display = 'flex';
+                createConfetti();
+            }
+        }
+        
+        // Función para abrir regalo
+        function openGift() {
+            const giftBox = document.querySelector('.gift-box');
+            const initialImages = document.getElementById('initialImages');
+            const hiddenImages = document.getElementById('hiddenImages');
+            
+            giftBox.style.transform = 'scale(0)';
+            giftBox.style.opacity = '0';
+            
+            setTimeout(() => {
+                giftBox.style.display = 'none';
+                initialImages.style.display = 'none';
+                
+                // Mostrar el mensaje especial y las imágenes ocultas
+                document.getElementById('specialMessage').style.display = 'block';
+                hiddenImages.style.display = 'flex';
+                
+                createConfetti();
+            }, 500);
+        }
+        
+        // Función para crear confeti
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#ff8e8e', '#a8edea, #fed6e3', '#ffd166'];
+            const container = document.querySelector('.container');
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = confetti.style.width;
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                
+                // Crear animación de caída
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fall {
+                        to {
+                            transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                container.appendChild(confetti);
+                
+                // Eliminar confeti después de la animación
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
